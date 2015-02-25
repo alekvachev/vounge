@@ -28,16 +28,14 @@
             if(cookie.getName().equals("user")) {
                 userName = cookie.getValue();
             }
-
-            if(cookie.getName().equals("JSESSIONID")) {
-                sessionID = cookie.getValue();
-            }
         }
     }
+
+    sessionID = session.getId();
 %>
     <h3>Hi <%= userName %>, Login successful. Your Session ID=<%= sessionID %></h3><br>
     Session confirmed: <%=sess %><br>
-    <form action="LogoutServlet" method="post">
+    <form action="<%= response.encodeURL("LogoutServlet") %>" method="post">
         <input type="submit" value="Logout" >
     </form>
 </body>
