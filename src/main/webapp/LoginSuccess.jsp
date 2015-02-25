@@ -10,25 +10,35 @@
 </head>
 <body>
 <%
+    //allow access only if session exists
+    String sess = null;
+
+    if(session.getAttribute("sessAttribute") == null) {
+        response.sendRedirect("login.html");
+    } else {
+        sess = (String) session.getAttribute("sessAttribute");
+    }
+
     String userName = null;
+    String sessionID = null;
     Cookie[] cookies = request.getCookies();
 
-    if(cookies != null) {
+    if(cookies !=null ){
         for(Cookie cookie : cookies) {
             if(cookie.getName().equals("user")) {
                 userName = cookie.getValue();
-                break;
+            }
+
+            if(cookie.getName().equals("JSESSIONID")) {
+                sessionID = cookie.getValue();
             }
         }
     }
-
-    if(userName == null) {
-        response.sendRedirect("login.html");
-    }
 %>
-    <h3>Hi <%= userName %>, Login successful.</h3><br>
+    <h3>Hi <%= userName %>, Login successful. Your Session ID=<%= sessionID %></h3><br>
+    Session confirmed: <%=sess %><br>
     <form action="LogoutServlet" method="post">
-        <input type="submit" value="Logout">
+        <input type="submit" value="Logout" >
     </form>
 </body>
 </html>
