@@ -9,17 +9,4 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
-    <context-param>
-        <param-name>dbURL</param-name>
-        <param-value>jdbc:postgres://localhost/db</param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbUser</param-name>
-        <param-value>postgres</param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbUserPwd</param-name>
-        <param-value>postgres</param-value>
-    </context-param>
 </web-app>

@@ -1,4 +1,4 @@
-package com.vounge.server;
+package com.vounge.server.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +27,6 @@ public class LogoutServlet extends HttpServlet {
 
         //invalidate the session if exists
         HttpSession session = request.getSession(false);
-        System.out.println("User="+session.getAttribute("sessAttribute"));
 
         if(session != null){
             session.invalidate();

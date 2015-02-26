@@ -10,17 +10,7 @@
 </head>
 <body>
 <%
-    //allow access only if session exists
-    String sess = null;
-
-    if(session.getAttribute("sessAttribute") == null) {
-        response.sendRedirect("login.html");
-    } else {
-        sess = (String) session.getAttribute("sessAttribute");
-    }
-
     String userName = null;
-    String sessionID = null;
     Cookie[] cookies = request.getCookies();
 
     if(cookies !=null ){
@@ -30,11 +20,8 @@
             }
         }
     }
-
-    sessionID = session.getId();
 %>
-    <h3>Hi <%= userName %>, Login successful. Your Session ID=<%= sessionID %></h3><br>
-    Session confirmed: <%=sess %><br>
+    <h3>Hi <%= userName %>, Login successful. Your Session ID=<%= session.getId() %></h3><br>
     <form action="<%= response.encodeURL("LogoutServlet") %>" method="post">
         <input type="submit" value="Logout" >
     </form>

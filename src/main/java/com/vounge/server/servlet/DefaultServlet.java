@@ -1,4 +1,4 @@
-package com.vounge.server;
+package com.vounge.server.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
